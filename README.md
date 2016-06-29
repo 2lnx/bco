@@ -20,5 +20,10 @@
 ####有些格式
     这里就随便哈拉哈拉，这是表示一个block code
     var name = new Engine(core:2,thread:12);
+####引擎特性
+- 超级变身
+- 三体整合
+- 统一通信API
+
 
 __技术支持__ _:_ <xyz@2lnx.cn>
