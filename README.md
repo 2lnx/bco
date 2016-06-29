@@ -10,7 +10,6 @@
 [4]: http://bulmei.com/support "随时待命"
 
 ##嵌入图解
----
 ####使用html标签
 
 <img src="443.jpg"></img>
@@ -18,3 +17,5 @@
 ####使用md标签
 
 ![443](443.jpg)
+
+__技术支持__ _:_ <xyz@2lnx.cn>
