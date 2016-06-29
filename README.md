@@ -4,13 +4,6 @@
 ##概述与声明
 "Bco"这是一个学习github与git使用的git仓。如果您把它__clone__到您的电脑上，将得到一堆无用的东东，倘若您依然故我，那么就随心吧，只要最后不会桑心就好，呵呵。
 
-####使用链接和参考链接
-这样也行[布美文海][1]、[个性偏好][3]、[一切使命][2]、[待命武士][4]、<a href="http://bulmei.net/" title="闪光" target="_blank">闪光</a>
-[1]: http://bulmei.com/home "bulmei"
-[2]: http://bulmei.com/profile "个性偏好"
-[3]: http://bulmei.com/about "一切关于您"
-[4]: http://bulmei.com/support "随时待命"
-
 ##嵌入图解
 ####使用html标签
 
@@ -40,6 +33,13 @@
 * 胡说八道容易话，圆谎很难全。
 * 对于任何事情都保持无知的状态，却带着了如指掌的知识脑袋？
 * 如果你无法通过_email_联系到我，那么就对了，因为这是我随便抓挠的，能用才怪，除非你有心。
+
+####使用链接和参考链接
+这样也行[布美文海][1]、[个性偏好][3]、[一切使命][2]、[待命武士][4]、<a href="http://bulmei.net/" title="闪光" target="_blank">闪光</a>
+[1]: http://bulmei.com/home "bulmei"
+[2]: http://bulmei.com/profile "个性偏好"
+[3]: http://bulmei.com/about "一切关于您"
+[4]: http://bulmei.com/support "随时待命"
 
 ####__技术支持__
 - Email      _:_ <xyz@2lnx.cn>
