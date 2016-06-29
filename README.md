@@ -24,10 +24,10 @@
     var name = new Engine(core:2,thread:12);
 
 ######code
-```	funtion init(){
-		return 0;
-	}
-```
+    funtion init(){
+    	return 0;
+    }
+
 
 ######什么鬼
 @(标签)[案件|难点]
