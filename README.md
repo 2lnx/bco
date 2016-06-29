@@ -42,6 +42,6 @@
 |平台        |     支持                               
 |:----------:|:---------------------------------------
 |Email       | <xyz@2lnx.cn>                          
-|`新浪微博`  | [@练习册](https://weibo.com/23232323)  
+|`新浪微博`  | [@练习册](https://weibo.com/34t43grffwefe3f2)  
 |twitter     |[@悠秀支持](https://twitter.com/0000000)
 
