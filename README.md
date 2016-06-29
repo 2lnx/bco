@@ -17,6 +17,11 @@
 
 ![443](443.jpg)
 
+####使用md中url
+![443][jpg-url]
+
+[jpg-url]:https://github.com/2lnx/bco/raw/master/443.jpg "Image Title"
+
 ####有些格式
     这里就随便哈拉哈拉，这是表示一个block code
     var name = new Engine(core:2,thread:12);
