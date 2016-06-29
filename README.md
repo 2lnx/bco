@@ -19,7 +19,7 @@
 [jpg-url]:https://github.com/2lnx/bco/raw/master/443.jpg "Image Title"
 
 ####格式练习
-######有些格式
+######Block code 代码块格式
     这里就随便哈拉哈拉，这是表示一个block code
     var name = new Engine(core:2,thread:12);
 ######引擎特性
