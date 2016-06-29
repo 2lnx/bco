@@ -22,6 +22,21 @@
 ######Block code 代码块格式
     这里就随便哈拉哈拉，这是表示一个block code
     var name = new Engine(core:2,thread:12);
+
+######code
+`
+funtion init(){
+return 0;
+}
+`
+######什么鬼
+@(标签)[案件|难点]
+
+1. 这个凶手
+2. 他是侦探
+3. 出现的是助手
+4. 影法师
+
 ######引擎特性
 - 超级变身
 - 三体整合
