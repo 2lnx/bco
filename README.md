@@ -60,8 +60,8 @@
 
 ######__技术支持__
 - Email      _:_ <xyz@2lnx.cn>
-- `新浪微博`__-__[@练习册](https://weibo.com/11111111)
-* `twitter` __-__[@悠秀支持](https://twitter.com/0000000)
+- `新浪微博`  __-__[@练习册](https://weibo.com/11111111)
+* `twitter`  __-__[@悠秀支持](https://twitter.com/0000000)
 
 ######使用表格布局
 |平台        |     支持                                     |描述 |
@@ -74,7 +74,7 @@
 ######这是引用
 > 可以说吗？这是引用
 > 因为这是没有的事儿
-> 
+>
 
 ######小事儿
 ![](http://www.forkosh.com/mathtex.cgi? \Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a})
