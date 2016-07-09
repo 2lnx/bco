@@ -1,15 +1,9 @@
 #! /usr/bin/sh
 
 CC=gcc
-CFLAGS=-Wall -O -g
 
-OBJ=m.o
+main: m.o
+    gcc m.o -o main
 
-main:$(OBJ)
-    $(CC) $^ -o %@
-    
-%.o:%c
-    $(CC) -c $< -o $@
-
-clean:
-	rm *.o
+m.o: m.c
+    $(CC) -c m.c -o m.o
