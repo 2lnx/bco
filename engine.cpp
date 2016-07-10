@@ -1,7 +1,11 @@
+/**
+    
+*/
 
-#include <stdio.h>
+#include <iostream>
+using namespace std;
 
-int main(){
-    printf("out end.\n");
+int main(int argc,const char*args[]){
+    cout<<"out end."<<endl;
     return 0;
 }
