@@ -39,11 +39,11 @@ static const int PORT = 9995;
 
 static void conn_readcb(struct bufferevent *bev, void *user_data)
 {
-//	struct evbuffer *input = bufferevent_get_input(bev);
-//	if (evbuffer_get_length(input) == 0) {
-//		printf("conn_readcb flushed answer\n");
-//		bufferevent_free(bev);
-//	}
+	struct evbuffer *input = bufferevent_get_input(bev);
+	if (evbuffer_get_length(input) == 0) {
+		printf("conn_readcb flushed answer\n");
+		bufferevent_free(bev);
+	}
 #define MAX_LINE    512
 	char line[MAX_LINE + 1];
 	int n;
