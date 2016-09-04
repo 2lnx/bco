@@ -40,21 +40,26 @@ static const int PORT = 9995;
 static void conn_readcb(struct bufferevent *bev, void *user_data)
 {
 	struct evbuffer *input = bufferevent_get_input(bev);
-	if (evbuffer_get_length(input) == 0) {
-		printf("conn_readcb flushed answer\n");
-		bufferevent_free(bev);
-	}
-#define MAX_LINE    512
-	char line[MAX_LINE + 1];
-	int n;
-	// -- evutil_socket_t fd = bufferevent_getfd(bev);
+	//if (evbuffer_get_length(input) == 0) {
+	//	printf("conn_readcb flushed answer\n");
+	//	bufferevent_free(bev);
+	//}
 
+//#define MAX_LINE    5120
+	//char line[MAX_LINE + 1];
+	int n;
+	evutil_socket_t fd = bufferevent_getfd(bev);
+	printf("%ld\t%ld\t%ld\n", evbuffer_get_length(input), bufferevent_get_max_to_write(bev), bufferevent_get_max_to_read(bev));
+	
+	size_t MAX_LINE = bufferevent_get_max_to_write(bev);
+	char* line = new char[MAX_LINE+1];
 	while (n = bufferevent_read(bev, line, MAX_LINE), n > 0) {
-		// -- line[n] = '\0';
-		// -- printf("fd=%u, read line: %s\n", fd, line);
+		 line[n] = '\0';
+		 printf("fd=%u, read line: %s\n%ld\n", fd, line,n);
 
 		bufferevent_write(bev, line, n);
 	}
+	delete[] line;
 }
 
 static void conn_eventcb(struct bufferevent *bev, short events, void *user_data)
