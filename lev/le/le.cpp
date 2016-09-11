@@ -33,9 +33,23 @@
 #ifdef WIN32
 #include <WinSock2.h>
 #pragma comment(lib,"ws2_32.lib")
+
+#include "resource.h"
 #endif
 
 static const int PORT = 9995;
+
+static unsigned int id = 0;
+struct CtxBox {
+	event_base *base;
+	HANDLE _mutex;
+	unsigned int index;
+	CtxBox():base(0),_mutex(0),index(id++){
+		if (id >= MAXINT32) {
+			id = 0;
+		}
+	}
+};
 
 static void conn_readcb(struct bufferevent *bev, void *user_data)
 {
@@ -49,13 +63,16 @@ static void conn_readcb(struct bufferevent *bev, void *user_data)
 	//char line[MAX_LINE + 1];
 	int n;
 	evutil_socket_t fd = bufferevent_getfd(bev);
-	printf("%ld\t%ld\t%ld\n", evbuffer_get_length(input), bufferevent_get_max_to_write(bev), bufferevent_get_max_to_read(bev));
+	//printf("%ld\t%ld\t%ld\n", evbuffer_get_length(input), bufferevent_get_max_to_write(bev), bufferevent_get_max_to_read(bev));
 	
 	size_t MAX_LINE = bufferevent_get_max_to_write(bev);
 	char* line = new char[MAX_LINE+1];
 	while (n = bufferevent_read(bev, line, MAX_LINE), n > 0) {
 		 line[n] = '\0';
-		 printf("fd=%u, read line: %s\n%ld\n", fd, line,n);
+		 struct CtxBox *box = (struct CtxBox*)user_data;
+		 struct event_base *base = (struct event_base *)box->base;
+
+		 //printf("fd=%u, read line: %s\n%ld\n", fd, line,n);
 
 		bufferevent_write(bev, line, n);
 	}
@@ -64,6 +81,13 @@ static void conn_readcb(struct bufferevent *bev, void *user_data)
 
 static void conn_eventcb(struct bufferevent *bev, short events, void *user_data)
 {
+	struct CtxBox *box = (CtxBox*)user_data;
+	if (box != NULL) {
+		printf("[%ld]\t",box->index);
+		ReleaseMutex(box->_mutex);
+		delete box;
+		box = NULL;
+	}
 	if (events & BEV_EVENT_EOF){
 		printf("Connection closed.\n");
 	}else if (events & BEV_EVENT_ERROR){
@@ -93,17 +117,23 @@ static void listener_cb(struct evconnlistener *listener, evutil_socket_t fd,
 	struct event_base *base = (struct event_base *)user_data;
 	struct bufferevent *bev;
 
+	struct CtxBox *box = new CtxBox();
+	box->base = base;
+	box->_mutex = CreateMutex(NULL, true, L"OL");
+
 	bev = bufferevent_socket_new(base, fd, BEV_OPT_CLOSE_ON_FREE);
 	if (!bev){
 		fprintf(stderr, "Error constructing bufferevent!");
 		event_base_loopbreak(base);
 		return;
 	}
-	bufferevent_setcb(bev, conn_readcb, NULL, conn_eventcb, NULL);
+	bufferevent_setcb(bev, conn_readcb, NULL, conn_eventcb, box);
 	bufferevent_enable(bev, EV_READ );
+	bufferevent_enable(bev, EV_WRITE);
 }
-
-int main(int argc, char **argv)
+//ほくは臼奨へ佩きましたよ
+// 
+int mainv(int argc, char **argv)
 {
 #ifdef WIN32
 	WSADATA wsa_data;
@@ -116,6 +146,7 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
+	///
 	struct sockaddr_in sin;
 
 	memset(&sin, 0, sizeof(sin));
