@@ -455,6 +455,7 @@ int32_t EncodeALAC(FILE * inputFile, FILE * outputFile, AudioFormatDescription t
     while (theInputPacketBytes <= inputDataBytesRemaining)
     {
         numBytes = fread(theReadBuffer, 1, theInputPacketBytes, inputFile);
+		printf("frame read bytes : %ld \t : %ld\n",numBytes, inputDataBytesRemaining);
 #if VERBOSE
         printf ("Read %i bytes\n", numBytes);
 #endif
